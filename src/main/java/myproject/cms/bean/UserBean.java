@@ -1,7 +1,8 @@
 package myproject.cms.bean;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Date;
+import java.sql.Timestamp;
+
 
 /**
  * User Bean encapsulates User attributes
@@ -15,13 +16,13 @@ public class UserBean extends BaseBean{
 	private String login;
 	private String password;
 	private String confirmPassword;
-	private LocalDate dateOfBirth;
+	private Date dateOfBirth;
 	private String address;
 	private String mobileNo;
 	private long roleId;
 	private int unSuccessfulLogin;
 	private String gender;
-	private LocalDateTime lastLogin;
+	private Timestamp lastLogin;
 	private String lock;
 	private String registeredIP;
 	private String lastLoginIP;
@@ -56,10 +57,10 @@ public class UserBean extends BaseBean{
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-	public LocalDate getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
-	public void setDateOfBirth(LocalDate dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 	public String getAddress() {
@@ -92,10 +93,10 @@ public class UserBean extends BaseBean{
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public LocalDateTime getLastLogin() {
+	public Timestamp getLastLogin() {
 		return lastLogin;
 	}
-	public void setLastLogin(LocalDateTime lastLogin) {
+	public void setLastLogin(Timestamp lastLogin) {
 		this.lastLogin = lastLogin;
 	}
 	public String getLock() {

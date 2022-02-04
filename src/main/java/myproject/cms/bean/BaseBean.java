@@ -1,7 +1,9 @@
 package myproject.cms.bean;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * BaseBean Class
@@ -21,9 +23,9 @@ public abstract class BaseBean implements Comparable<BaseBean>,Serializable, Dro
 	protected String modifiedBy;
 	
 	/**Created Date Time */
-	protected  LocalDateTime createdDateTime;
+	protected  Timestamp createdDateTime;
 	/** Modified Date Time */
-	protected LocalDateTime modifiedDateTime;
+	protected Timestamp modifiedDateTime;
 	
 	/**
 	 * Get Non Business Primary Key
@@ -76,21 +78,21 @@ public abstract class BaseBean implements Comparable<BaseBean>,Serializable, Dro
 	 * Get Created Date and Time
 	 * @return
 	 */
-	public LocalDateTime getCreatedDateTime() {
+	public Timestamp getCreatedDateTime() {
 		return createdDateTime;
 	}
 	/**
 	 * Set Created Date and Time
 	 * @param createdDateTime
 	 */
-	public void setCreatedDateTime(LocalDateTime createdDateTime) {
+	public void setCreatedDateTime(Timestamp createdDateTime) {
 		this.createdDateTime = createdDateTime;
 	}
 	/**
 	 * Get Modified Date and Time
 	 * @return
 	 */
-	public LocalDateTime getModifiedDateTime() {
+	public Timestamp getModifiedDateTime() {
 		return modifiedDateTime;
 	}
 	
@@ -98,7 +100,7 @@ public abstract class BaseBean implements Comparable<BaseBean>,Serializable, Dro
 	 * Set Modified Date and Time
 	 * @param modifiedDateTime
 	 */
-	public void setModifiedDateTime(LocalDateTime modifiedDateTime) {
+	public void setModifiedDateTime(Timestamp  modifiedDateTime) {
 		this.modifiedDateTime = modifiedDateTime;
 	}
 	

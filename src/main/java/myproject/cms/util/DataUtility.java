@@ -1,9 +1,12 @@
 package myproject.cms.util;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Data Utility class to format data from one format to another
@@ -80,82 +83,105 @@ public class DataUtility {
 			return 0;
 	}
 
-	public static String[] dateStrings(String str) {
-		String[] strs = str.split("-");
-		return strs;
-	}
-
 	/**
-	 * Converts String to LocalDate
+	 * Converts String into Date
 	 * 
-	 * @param str
+	 * @param val
 	 * @return
 	 */
-	public static LocalDate getDate(String str) {
-		LocalDate date = null;
-		String[] strs = dateStrings(str);
+	public static Date getDate(String val) {
+		System.out.println(val);
+		Date date=null;
 		try {
-			date = LocalDate.of(getInt(strs[2]), getInt(strs[1]), getInt(strs[0]));
+			date = formatter.parse(val);
 		} catch (Exception e) {
-			e.printStackTrace();
+         e.printStackTrace();
 		}
 		return date;
 	}
 
 	/**
-	 * Converts LocalDate to String
+	 * Converts Date into String
 	 * 
 	 * @param date
 	 * @return
 	 */
-	public static String getDateString(LocalDate date) {
+	public static String getDateString(Date date) {
 		try {
-			return date.toString();
+			return formatter.format(date);
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		return "";
 	}
 
 	/**
-	 * Converts String to LocalDateTime
-	 * @param str
+	 * Gets date after n number of days
+	 * 
+	 * @param date
+	 * @param day
 	 * @return
 	 */
-	public static LocalDateTime getDateTime(String str) {
-		LocalDateTime dateTime = null;
-		try {
-			dateTime = LocalDateTime.parse(str, DateTimeFormatter.ofPattern(APP_TIME_FORMAT));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return dateTime;
+	public static Date getDate(Date date, int day) {
+		Calendar cal = Calendar.getInstance();
+
+		return null;
 	}
-	
+
 	/**
-	 * Get Current Date and Time
+	 * Converts String into Time
+	 * 
+	 * @param val
 	 * @return
 	 */
-	public static LocalDateTime getCurrentTime() {
-		LocalDateTime dateTime = null;
+	public static Timestamp getTimestamp(String val) {
+
+		Timestamp timeStamp = null;
 		try {
-			dateTime = LocalDateTime.now();
-		}catch (Exception e) {
-			e.printStackTrace();
+			timeStamp = new Timestamp((timeFormatter.parse(val)).getTime());
+		} catch (Exception e) {
+			return null;
 		}
-		return dateTime;
+		return timeStamp;
 	}
-	
+
+	public static Timestamp getTimestamp(long l) {
+
+		Timestamp timeStamp = null;
+		try {
+			timeStamp = new Timestamp(l);
+		} catch (Exception e) {
+			return null;
+		}
+		return timeStamp;
+	}
+
+	public static Timestamp getCurrentTimestamp() {
+		Timestamp timeStamp = null;
+		try {
+			timeStamp = new Timestamp(new Date().getTime());
+		} catch (Exception e) {
+		}
+		return timeStamp;
+
+	}
+
+	public static long getTimestamp(Timestamp tm) {
+		try {
+			return tm.getTime();
+		} catch (Exception e) {
+			return 0;
+		}
+	}
 	public static void main(String[] args) {
 		System.out.println(getString("        Hello World      "));
 		System.out.println(new StringBuffer("     String Buffer   "));
 		System.out.println(getInt("59"));
 		System.out.println(getLong("8328439"));
 		System.out.println("getDate : "+getDate("12-12-2020"));
-		String[] strs = dateStrings("20-20-2020");
-		for(String s: strs)
-			System.out.println(s);
-		System.out.println("getDateString : "+getDateString(LocalDate.now()));
-		System.out.println(getCurrentTime());
+//		String[] strs = dateStrings("20-20-2020");
+//		for(String s: strs)
+//			System.out.println(s);
+//		System.out.println("getDateString : "+getDateString(LocalDate.now()));
+//		System.out.println(getCurrentTime());
 	}
 }
